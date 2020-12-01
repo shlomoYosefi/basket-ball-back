@@ -3,6 +3,7 @@ import { GameRepository } from 'src/repositorys/game-repository';
 import { StatisticByPlayerRepository } from 'src/repositorys/statistic-by-player-repository';
 import { GameDto } from 'src/DTO/game-dto';
 import { StatisticByPlayerDto } from 'src/DTO/statisticByPlayer-dto';
+import { PlayerRepository } from 'src/repositorys/player-repository';
 
 @Injectable()
 export class ResultsService {
@@ -35,5 +36,9 @@ export class ResultsService {
 
     getstatisticByDate(games){
         return this.statisticRepository.getstatisticByDate(games)
+    }
+
+    getStatisticByPlayer(id){
+        return this.statisticRepository.getStatisticByPlayer(id)
     }
 }

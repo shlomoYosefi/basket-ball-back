@@ -2,12 +2,15 @@ import { EntityRepository, Repository } from "typeorm";
 import { playerDto } from "src/DTO/player-dto";
 import { grupDto } from "src/DTO/grup-dto";
 import { PlayerEntity } from "src/entityes/player-entity";
+import { StatisticByPlayerRepository } from "./statistic-by-player-repository";
 
 
 @EntityRepository(PlayerEntity)
 export class PlayerRepository extends Repository<PlayerEntity> {
-
    
+    constructor(private statisticRepository:StatisticByPlayerRepository ){
+        super();
+    }
 
    async addPlayer(player:playerDto){        
         const {Name,Height,Image,Position,GrupId} = player
@@ -29,7 +32,10 @@ export class PlayerRepository extends Repository<PlayerEntity> {
 
     
 
-    deletePlayer(id):void{
+    async deletePlayer(id){
+        // const result = await this.statisticRepository.getStatisticByPlayer(id)
+        // console.log(result);
+        
         this.delete(id)
     }
 

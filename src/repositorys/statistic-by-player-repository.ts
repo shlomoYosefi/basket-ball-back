@@ -90,4 +90,10 @@ export class StatisticByPlayerRepository extends Repository<StatisticByPlayer> {
         return arrstatistic;
         
     }
+
+
+    async getStatisticByPlayer(id){
+        const result = await this.find({idplayer:id}) 
+        return result
+    }
 }

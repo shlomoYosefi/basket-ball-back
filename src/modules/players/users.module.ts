@@ -14,7 +14,8 @@ import { AuthService } from 'src/services/auth/auth.service';
 import { ChackTokenGuard } from 'src/gurds/chack-token.guard';
 
 @Module({
-    imports:[TypeOrmModule.forFeature([PlayerRepository,GrupRepository,GameRepository,StatisticByPlayerRepository]),
+    imports:[TypeOrmModule.forFeature([PlayerRepository,GrupRepository,GameRepository,StatisticByPlayerRepository
+    ]),
       JwtModule.register({secret:"shlomo" , signOptions:{expiresIn:'10000s'}})
     ],
     controllers:[PlayrsController,ResultsController],
