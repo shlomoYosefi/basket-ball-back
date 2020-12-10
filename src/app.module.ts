@@ -16,12 +16,13 @@ import { join } from 'path';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
+      url:process.env.DATABASE_URL,
       type: 'postgres',
-      host: 'localhost',
-      port: 5433,
-      username: 'postgres',
+      // host: 'localhost',
+      // port: 5433,
+      // username: 'postgres',
       password: 'postgres',
-      database: 'basketBall',
+      // database: 'basketBall',
       logging:false,
       entities: [PlayerEntity,GrupEntity,Game,StatisticByPlayer],
       synchronize: true,
