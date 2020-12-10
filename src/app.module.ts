@@ -9,6 +9,8 @@ import { Game } from './entityes/game';
 import { StatisticByPlayer } from './entityes/statistic-by-player';
 import { AuthService } from './services/auth/auth.service';
 import { ChackTokenGuard } from './gurds/chack-token.guard';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 
 @Module({
@@ -24,9 +26,17 @@ import { ChackTokenGuard } from './gurds/chack-token.guard';
       entities: [PlayerEntity,GrupEntity,Game,StatisticByPlayer],
       synchronize: true,
     }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, 'client'),
+    }),
     UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(){
+    console.log(join(__dirname, 'client'));
+    
+  }
+}

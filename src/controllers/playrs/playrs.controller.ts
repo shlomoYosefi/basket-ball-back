@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param, Delete, UseInterceptors, ValidationPipe, Req, UseGuards, UploadedFile, Headers, Header } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Delete, UseInterceptors, ValidationPipe, Req, UseGuards, UploadedFile, Headers, Header, Res } from '@nestjs/common';
 import { PlayersService } from 'src/services/players/players.service';
 import { grupDto } from 'src/DTO/grup-dto';
 import { playerDto } from 'src/DTO/player-dto';
@@ -9,18 +9,18 @@ import { FileInterceptor} from '@nestjs/platform-express' ;
 import {diskStorage} from 'multer' ;
 import { AuthService } from 'src/services/auth/auth.service';
 import { ChackTokenGuard } from 'src/gurds/chack-token.guard';
-import { parse } from 'path';
+import { parse, join } from 'path';
 
-const config = {storage: diskStorage({
-   destination: './images/profileImages',
-   filename: (req, file, cb) =>{
-      console.log("plplp");
-      
-      const fileName = req.params['user_email'] ;
-      const extension = parse(file.originalname).ext ;
-      cb(null,`${fileName}${extension}`) ;
-  }
-})}
+export const storage={
+  
+   storage:diskStorage({
+     destination:'./uploads/images',
+     filename:(req,file,cb )=>{      
+       const filename = `${req['headers']['id']}.jpg`
+       cb(null,`${filename}`)
+     }
+   })
+ }
 
 
 
@@ -59,17 +59,19 @@ export class PlayrsController {
 
     @UseGuards(ChackTokenGuard)
     @Delete('deletePlayer/:id')
-    deletePlayer(@Param('id',ValidationPipe) id):void{
-      this.srvPlayer.deletePlayer(id)
+    deletePlayer(@Param('id',ValidationPipe) id){
+     return this.srvPlayer.deletePlayer(id)
+    } 
+
+    @Post('upload')
+    @UseInterceptors(FileInterceptor('image',storage))
+    upload(@UploadedFile() file){  
     }
-
- 
-    @Post('uploadImage') 
-    @UseInterceptors(FileInterceptor('image', config))
-    uploadImage(@UploadedFile() profile_image){
-      //  this.srvPlayer.uploadImage(image)
-    }  
-
-
+  
+  
+    @Get('getFile/:id')
+    getfile(@Param('id') id , @Res() res:any){
+      return res.sendFile(join(process.cwd(),`uploads/images/${id}.jpg`))
+    }
     
 }

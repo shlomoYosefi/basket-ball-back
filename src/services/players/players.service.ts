@@ -29,8 +29,8 @@ export class PlayersService {
        return this.playerRepository.getPlayers(idGrup)
     }
 
-    deletePlayer(id):void{
-        this.playerRepository.deletePlayer(id)
+    deletePlayer(id){
+       return this.playerRepository.deletePlayer(id)
     }
 
     
