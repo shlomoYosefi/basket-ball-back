@@ -29,9 +29,9 @@ export class AppController {
 
   @Get()
   root(@Res() response): void {
-    console.log(join(__dirname,'client/index.html'));
+    console.log(join(__dirname,'..','client/index.html'));
     
-    response.sendFile(join(__dirname,'client'));
+    response.sendFile(join(__dirname,'..','client'));
   }
 
 
@@ -46,5 +46,5 @@ export class AppController {
   //   return res.sendFile(join(process.cwd(),`uploads/images/${id}.jpg`))
   // }
 
-
+ 
 }
