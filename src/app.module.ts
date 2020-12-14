@@ -16,7 +16,7 @@ import { join } from 'path';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      url:process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5433/basketBall',
+      url:process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/basketBall',
       type: 'postgres',
       // host: 'localhost',
       // port: 5433,
