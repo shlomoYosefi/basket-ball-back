@@ -28,7 +28,7 @@ import { join } from 'path';
       synchronize: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, 'client'),
+      rootPath: join(__dirname, '..','client'),
     }),
     UsersModule,
   ],
