@@ -11,6 +11,7 @@ import { AuthService } from './services/auth/auth.service';
 import { ChackTokenGuard } from './gurds/chack-token.guard';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { ConfigModule } from '@nestjs/config'
 
 
 @Module({
@@ -31,13 +32,16 @@ import { join } from 'path';
       rootPath: join(__dirname, '..','client'),
     }),
     UsersModule,
+    ConfigModule.forRoot(
+    )
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
   constructor(){
-    console.log("gggggggg",join(__dirname, '..','client')); 
-    
-  }
+    console.log("gggggggg",process.env.DATABASE_URL); 
+
+     
+  } 
 }

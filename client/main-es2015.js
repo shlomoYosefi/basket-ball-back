@@ -369,6 +369,7 @@ class AddAPlayerComponent {
         let fileReader = new FileReader();
         fileReader.onload = e => {
             this.image = image;
+            console.log(this.image);
         };
         fileReader.readAsDataURL(image);
         let formData = new FormData();
@@ -3051,11 +3052,11 @@ __webpack_require__.r(__webpack_exports__);
 
 class SarveOfGurdService {
     constructor() {
-        this.logIn = localStorage.getItem('gurd');
     }
     getLogIn() {
-        console.log(this.logIn);
-        return this.logIn;
+        let logIn = localStorage.getItem('gurd');
+        console.log(logIn);
+        return logIn;
     }
 }
 SarveOfGurdService.ɵfac = function SarveOfGurdService_Factory(t) { return new (t || SarveOfGurdService)(); };
@@ -3136,7 +3137,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DTO_grup_dto__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../DTO/grup-dto */ "./src/app/DTO/grup-dto.ts");
 /* harmony import */ var _DTO_player_dto__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../DTO/player-dto */ "./src/app/DTO/player-dto.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _get_data_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./get-data.service */ "./src/app/servies/get-data.service.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _get_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./get-data.service */ "./src/app/servies/get-data.service.ts");
+
 
 
 
@@ -3149,7 +3152,7 @@ class PostDataService {
     constructor(http, srvData) {
         this.http = http;
         this.srvData = srvData;
-        this.url = 'http://localhost:3000';
+        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].api;
         this.grupId = 0;
         this.token = localStorage.getItem("token");
         if (this.token) {
@@ -3229,14 +3232,14 @@ class PostDataService {
         this.http.post(`${this.url}/playrs/upload`, formData, { headers }).subscribe();
     }
 }
-PostDataService.ɵfac = function PostDataService_Factory(t) { return new (t || PostDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_get_data_service__WEBPACK_IMPORTED_MODULE_5__["GetDataService"])); };
+PostDataService.ɵfac = function PostDataService_Factory(t) { return new (t || PostDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_get_data_service__WEBPACK_IMPORTED_MODULE_6__["GetDataService"])); };
 PostDataService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: PostDataService, factory: PostDataService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PostDataService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }, { type: _get_data_service__WEBPACK_IMPORTED_MODULE_5__["GetDataService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }, { type: _get_data_service__WEBPACK_IMPORTED_MODULE_6__["GetDataService"] }]; }, null); })();
 
 
 /***/ }),
@@ -3255,7 +3258,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: false
+    production: false,
+    api: 'http://localhost:3000'
 };
 /*
  * For easier debugging in development mode, you can import the following file

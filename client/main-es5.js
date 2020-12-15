@@ -684,6 +684,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           fileReader.onload = function (e) {
             _this2.image = image;
+            console.log(_this2.image);
           };
 
           fileReader.readAsDataURL(image);
@@ -6173,15 +6174,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var SarveOfGurdService = /*#__PURE__*/function () {
       function SarveOfGurdService() {
         _classCallCheck(this, SarveOfGurdService);
-
-        this.logIn = localStorage.getItem('gurd');
       }
 
       _createClass(SarveOfGurdService, [{
         key: "getLogIn",
         value: function getLogIn() {
-          console.log(this.logIn);
-          return this.logIn;
+          var logIn = localStorage.getItem('gurd');
+          console.log(logIn);
+          return logIn;
         }
       }]);
 
@@ -6367,7 +6367,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _get_data_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _get_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./get-data.service */
     "./src/app/servies/get-data.service.ts");
 
@@ -6377,7 +6383,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.http = http;
         this.srvData = srvData;
-        this.url = 'http://localhost:3000';
+        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].api;
         this.grupId = 0;
         this.token = localStorage.getItem("token");
 
@@ -6507,7 +6513,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     PostDataService.ɵfac = function PostDataService_Factory(t) {
-      return new (t || PostDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_get_data_service__WEBPACK_IMPORTED_MODULE_5__["GetDataService"]));
+      return new (t || PostDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_get_data_service__WEBPACK_IMPORTED_MODULE_6__["GetDataService"]));
     };
 
     PostDataService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
@@ -6527,7 +6533,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return [{
           type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
         }, {
-          type: _get_data_service__WEBPACK_IMPORTED_MODULE_5__["GetDataService"]
+          type: _get_data_service__WEBPACK_IMPORTED_MODULE_6__["GetDataService"]
         }];
       }, null);
     })();
@@ -6559,7 +6565,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var environment = {
-      production: false
+      production: false,
+      api: 'http://localhost:3000'
     };
     /*
      * For easier debugging in development mode, you can import the following file
