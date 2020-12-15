@@ -6385,6 +6385,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.srvData = srvData;
         this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].api;
         this.grupId = 0;
+        console.log(this.url);
         this.token = localStorage.getItem("token");
 
         if (this.token) {
@@ -6566,7 +6567,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var environment = {
       production: false,
-      api: 'http://localhost:3000'
+      api: 'http://localhost:3000/'
     };
     /*
      * For easier debugging in development mode, you can import the following file

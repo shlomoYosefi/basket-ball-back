@@ -3154,6 +3154,7 @@ class PostDataService {
         this.srvData = srvData;
         this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].api;
         this.grupId = 0;
+        console.log(this.url);
         this.token = localStorage.getItem("token");
         if (this.token) {
             this.srvData.nameAGrup.next(localStorage.getItem('grup'));
@@ -3259,7 +3260,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    api: 'http://localhost:3000'
+    api: 'http://localhost:3000/'
 };
 /*
  * For easier debugging in development mode, you can import the following file
