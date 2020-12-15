@@ -6567,7 +6567,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var environment = {
       production: false,
-      api: 'http://localhost:3000/'
+      api: 'https://shlomo-basketball.herokuapp.com/'
     };
     /*
      * For easier debugging in development mode, you can import the following file
