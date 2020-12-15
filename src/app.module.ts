@@ -17,7 +17,7 @@ import { ConfigModule } from '@nestjs/config'
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      url:process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5433/basketBall',
+      url:process.env.DATABASE_URL ,
       type: 'postgres',
       // host: 'localhost',
       // port: 5433,
@@ -29,7 +29,7 @@ import { ConfigModule } from '@nestjs/config'
       synchronize: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..','client'),
+      rootPath: join(__dirname, '..','client'), 
     }),
     UsersModule,
     ConfigModule.forRoot(
