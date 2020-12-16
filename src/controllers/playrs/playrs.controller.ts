@@ -65,7 +65,9 @@ export class PlayrsController {
 
     @Post('upload')
     @UseInterceptors(FileInterceptor('image',storage))
-    upload(@UploadedFile() file){  
+    upload(@UploadedFile() file){
+      console.log(file);
+        
     }
   
   
